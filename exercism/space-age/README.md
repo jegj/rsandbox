@@ -76,3 +76,6 @@ Some Rust topics you may want to read about while solving this problem:
 ### Based on
 
 Partially inspired by Chapter 1 in Chris Pine's online Learn to Program tutorial. - https://pine.fm/LearnToProgram/?Chapter=01
+
+# Nice Solution
+- https://exercism.org/tracks/rust/exercises/space-age/solutions/tokenrove
