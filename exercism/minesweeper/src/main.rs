@@ -8,7 +8,7 @@ fn slice_to_string(row: &str) -> String {
     row.chars().collect()
 }
 fn main() {
-    let minefield = &["   *", "   ", "   "];
+    let minefield = &["  *", "   ", "   "];
 
     let minefield_updated = annotate(minefield);
     println!("{:#?}", minefield_updated);
