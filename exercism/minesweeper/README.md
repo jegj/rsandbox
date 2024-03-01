@@ -71,3 +71,8 @@ Can you complete the challenge without cloning the input?
 - @workingjubilee
 - @xakon
 - @ZapAnton
+
+
+## Nice Solutions
+
+- https://exercism.org/tracks/rust/exercises/minesweeper/solutions/kstep

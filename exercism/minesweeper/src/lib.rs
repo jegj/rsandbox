@@ -13,6 +13,10 @@ const MINE: u32 = 999999;
 
 pub fn annotate(minefield: &[&str]) -> Vec<String> {
     let rows: i32 = minefield.len() as i32;
+    if rows <= 0 {
+        let result: Vec<String> = vec![];
+        return result;
+    }
     let columns: i32 = minefield[0].len() as i32;
 
     let mut matrix: Vec<Vec<u32>> = vec![vec![0; columns as usize]; rows as usize];
@@ -23,9 +27,7 @@ pub fn annotate(minefield: &[&str]) -> Vec<String> {
         let mut y = 0;
         for target in row.as_bytes() {
             if *target as i32 == 42 {
-                println!("==============>mine => {} {}", x, y);
                 let adjacents = generate_adjacents(x as i32, y, rows, columns);
-                println!("adjacents =>{:?}", adjacents);
                 add_mines(adjacents, &mut matrix);
                 mines.push((x as i32, y));
             }
@@ -35,11 +37,9 @@ pub fn annotate(minefield: &[&str]) -> Vec<String> {
 
     print_mines(mines, &mut matrix);
 
-    //println!("result=>{:?}", matrix);
-
     fn print_element(elem: u32) -> String {
         let mine: String = "*".to_string();
-        let empty: String = "·".to_string();
+        let empty: String = " ".to_string();
 
         match elem {
             0 => empty,
@@ -78,12 +78,11 @@ pub fn generate_adjacents(x: i32, y: i32, x_len: i32, y_len: i32) -> Vec<(i32, i
 }
 
 pub fn valid_coordinates(x: i32, y: i32, x_len: i32, y_len: i32) -> bool {
-    println!("coord==> {} {} -> {} {}", x, y, x_len, y_len);
     x >= 0 && x < x_len && y >= 0 && y < y_len
 }
 
 pub fn print_mines(mines: Vec<(i32, i32)>, matrix: &mut Vec<Vec<u32>>) {
     for &(x, y) in &mines {
-        matrix[x as usize][y as usize] = MINE as u32;
+        matrix[x as usize][y as usize] = MINE;
     }
 }
