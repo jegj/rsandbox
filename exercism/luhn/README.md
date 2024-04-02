@@ -99,3 +99,6 @@ Sum the digits
 ### Based on
 
 The Luhn Algorithm on Wikipedia - https://en.wikipedia.org/wiki/Luhn_algorithm
+
+### Cool Solutions 
+- https://exercism.org/tracks/rust/exercises/luhn/solutions/JaneL
