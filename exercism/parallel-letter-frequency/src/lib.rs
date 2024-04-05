@@ -5,13 +5,15 @@ use std::{thread, usize};
 pub fn frequency(input: &[&str], worker_count: usize) -> HashMap<char, usize> {
     let chunk_size = input.len() / worker_count;
     let letter_counter: Arc<Mutex<HashMap<char, i32>>> = Arc::new(Mutex::new(HashMap::new()));
+    //let letter_counter = Arc::new(Mutex::new(0));
     let mut threads = vec![];
     for chunk in input.chunks(chunk_size) {
-        println!("?===>{:?}", chunk.len());
-        let chunk_clone = chunk.to_owned();
         let letter_counter_ref = Arc::clone(&letter_counter);
+        let c = chunk.clone();
+        println!("?===>{:?}", chunk.len());
         let handle = thread::spawn(move || {
-            count_letters(&chunk_clone, &letter_counter_ref);
+            let mut letter_counter_ref_mut = letter_counter_ref.lock().unwrap();
+            println!("===>{:?}", c)
         });
         threads.push(handle);
         /*
