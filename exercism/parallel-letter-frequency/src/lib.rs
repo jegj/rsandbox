@@ -12,8 +12,8 @@ pub fn frequency(input: &[&str], worker_count: usize) -> HashMap<char, usize> {
         let c = chunk.clone();
         println!("?===>{:?}", chunk.len());
         let handle = thread::spawn(move || {
-            let mut letter_counter_ref_mut = letter_counter_ref.lock().unwrap();
-            println!("===>{:?}", c)
+            //let mut letter_counter_ref_mut = letter_counter_ref.lock().unwrap();
+            //println!("===>{:?}", c)
         });
         threads.push(handle);
         /*
